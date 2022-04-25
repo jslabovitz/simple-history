@@ -40,15 +40,15 @@ module Simple
     end
 
     def include?(key)
-      @entries[key] != nil
+      @entries.include?(key.to_s)
     end
 
     def [](key)
-      @entries[key]
+      @entries[key.to_s]
     end
 
-    def []=(key, value)
-      @entries[key] = value
+    def []=(key, time)
+      @entries[key.to_s] = time
       save if @file
     end
 
@@ -56,12 +56,12 @@ module Simple
       @entries.sort_by(&:last).last
     end
 
-    def latest_time
-      latest_entry.last
-    end
-
     def latest_key
       latest_entry.first
+    end
+
+    def latest_time
+      latest_entry.last
     end
 
   end
