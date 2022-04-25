@@ -6,7 +6,7 @@ module Simple
   class History
 
     def initialize(file=nil)
-      @file = file
+      @file = file&.to_s
       @entries = {}
       load if @file && File.exist?(@file)
     end
